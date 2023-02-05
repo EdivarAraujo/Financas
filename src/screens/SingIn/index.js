@@ -8,6 +8,7 @@ import logo from '../../assets/logoSignIn.png'
 export default function SingIn(){
 
   return ( 
+    //inicio do projeto
     <C.Container>
       <StatusBar translucent={true} backgroundColor='transparent'/>
       <C.BackgroundImage source={logo}>
