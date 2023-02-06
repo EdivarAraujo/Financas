@@ -8,12 +8,16 @@ import logo from '../../assets/logoSignIn.png'
 export default function SingIn(){
 
   return ( 
-    //inicio do projeto
     <C.Container>
-      <StatusBar translucent={true} backgroundColor='transparent'/>
-      <C.BackgroundImage source={logo}>
+      <StatusBar hidden={false} translucent={true} backgroundColor='transparent'/>
+        <C.BackgroundImage source={logo}></C.BackgroundImage>
+      <C.ContainerInput>
+          <C.TextInput>Usuario:</C.TextInput>
+            <C.InputDados/>
+          <C.TextInput>Senha:</C.TextInput>
+            <C.InputDados/>
+      </C.ContainerInput>
 
-      </C.BackgroundImage>
     </C.Container>
   )
 
