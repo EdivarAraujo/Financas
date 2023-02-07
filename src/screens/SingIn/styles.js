@@ -4,7 +4,8 @@ import { Animated } from "react-native";
 
 
 export const Container = styled.View`
-  flex: 1;
+  flex: 2;
+  background-color:#171f25;
 `
 export const BoxLogo = styled.View`
   flex: 1;
@@ -15,36 +16,32 @@ export const BoxLogo = styled.View`
     paddingTop: 0 + getStatusBarHeight(),
     resizeMode: 'contain',
   })`
+  flex: 1;
   margin-top: 25%;
   justify-content: center;
   align-items: center;
+  /* background-color: red; */
+  margin: 5px;
 `;
 export const ContainerInput = styled.View`
-  flex: 2;
+  flex: ${({isKeyboardVisible}) => isKeyboardVisible ? '2' : '1'};
   flex-direction: column;
   height: 100%;
   width: 100%;
   align-items: center;
-  /* margin-left: 50px; */
   justify-content: center;
-`
-export const TextInput = styled.Text`
+`;
+export const ButtonEnter = styled.TouchableOpacity`
+  height: 50px;
+  width: 50%;
+  align-items: center;
+  background-color: #5fb74c;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin: 15px;
+`;
+export const TextButton = styled.Text`
   font-size: 18px;
   color: black;
-  text-align: center;
-  /* padding-left: 15px; */
-`
-export const InputDados = styled.TextInput`
-  height: 50px;
-  width: 80%;
-  margin: 12px;
-  border-Width: 1px;
-  border-radius: 5px;
-  padding-left: 15px;   
-`
-export const ImageLogo = styled.Image.attrs({
-  resizeMode: 'stretch',
-})`
-   width: 50;
-   height: 200;
-`
+`;
