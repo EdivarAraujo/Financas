@@ -1,34 +1,38 @@
 import styled from "styled-components/native";
 import { getStatusBarHeight} from 'react-native-status-bar-height'
+import { Animated } from "react-native";
+
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #F0F4FF;
+`
+export const BoxLogo = styled.View`
+  flex: 1;
   justify-content: center;
   align-items: center;
 `
- export const BackgroundImage = styled.ImageBackground.attrs({
-    paddingTop: 0 + getStatusBarHeight()
+ export const Logo = styled(Animated.Image).attrs({
+    paddingTop: 0 + getStatusBarHeight(),
+    resizeMode: 'contain',
   })`
-  flex: 1;
-  height: 100%;
-  width: 100%; 
   margin-top: 25%;
   justify-content: center;
   align-items: center;
 `;
 export const ContainerInput = styled.View`
-  flex: 1;
+  flex: 2;
   flex-direction: column;
+  height: 100%;
   width: 100%;
-  align-items: flex-start;
-  margin-left: 50px;
+  align-items: center;
+  /* margin-left: 50px; */
+  justify-content: center;
 `
 export const TextInput = styled.Text`
-  font-size: 12px;
+  font-size: 18px;
   color: black;
   text-align: center;
-  padding-left: 15px;
+  /* padding-left: 15px; */
 `
 export const InputDados = styled.TextInput`
   height: 50px;
@@ -37,4 +41,10 @@ export const InputDados = styled.TextInput`
   border-Width: 1px;
   border-radius: 5px;
   padding-left: 15px;   
+`
+export const ImageLogo = styled.Image.attrs({
+  resizeMode: 'stretch',
+})`
+   width: 50;
+   height: 200;
 `
