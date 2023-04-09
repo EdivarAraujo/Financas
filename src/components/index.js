@@ -4,6 +4,7 @@ import SlideExits from "./SlideExits";
 import InputValues from "./InputValues";
 import RenderConditional from "./RenderConditional";
 import Header from "./Header";
+import BalanceItem from "./BalanceItem";
 
 export {
   AlertBox,
@@ -11,5 +12,6 @@ export {
   SlideExits,
   InputValues,
   RenderConditional,
-  Header
+  Header,
+  BalanceItem
 }
