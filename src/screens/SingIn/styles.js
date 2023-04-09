@@ -1,24 +1,52 @@
 import styled from "styled-components/native";
 import { getStatusBarHeight} from 'react-native-status-bar-height'
-import img from '../../assets/logoDrawer.png';
+import { Animated } from "react-native";
+
 
 export const Container = styled.View`
- flex: 1;
- background-color: '#F0F4FF';
- justify-content: center;
- align-items: center;
+  flex: 2;
+  background-color:#171f25;
 `
-export const TextTela = styled.Text`
- font-size: 12px;
- color: black;
+export const BoxLogo = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `
- export const BackgroundImage = styled.ImageBackground.attrs({
-    paddingTop: 0 + getStatusBarHeight()
+ export const Logo = styled(Animated.Image).attrs({
+    paddingTop: 0 + getStatusBarHeight(),
+    resizeMode: 'contain',
   })`
   flex: 1;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 70%;
-  width: 100%;
-  padding-bottom: 40%;
+  margin-top: 25%;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
 `;
+export const ContainerInput = styled.View`
+  flex: ${({isKeyboardVisible}) => isKeyboardVisible ? '2' : '1'};
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+export const SubmitButton = styled.TouchableOpacity`
+  height: 50px;
+  width: 50%;
+  align-items: center;
+  background-color: #5fb74c;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin: 15px;
+`;
+export const TextButton = styled.Text`
+  font-size: 18px;
+  color: white;
+`;
+export const Link = styled.TouchableOpacity``
+
+export const LinkText = styled.Text`
+  color: white;
+`
+

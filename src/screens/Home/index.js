@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import * as C from './styles'
+import { Header } from "../../components"
 
 export default function Home(){
 
   return ( 
-    <C.Container>
-      <C.TextTela>SingIn</C.TextTela>
-    </C.Container>
+    <C.Background>
+       <Header title="Minhas Movimentações"/>
+    </C.Background>
   )
 
 }
