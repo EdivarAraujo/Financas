@@ -20,7 +20,6 @@ export const BoxLogo = styled.View`
   margin-top: 25%;
   justify-content: center;
   align-items: center;
-  /* background-color: red; */
   margin: 5px;
 `;
 export const ContainerInput = styled.View`
@@ -31,7 +30,7 @@ export const ContainerInput = styled.View`
   align-items: center;
   justify-content: center;
 `;
-export const ButtonEnter = styled.TouchableOpacity`
+export const SubmitButton = styled.TouchableOpacity`
   height: 50px;
   width: 50%;
   align-items: center;
@@ -43,5 +42,11 @@ export const ButtonEnter = styled.TouchableOpacity`
 `;
 export const TextButton = styled.Text`
   font-size: 18px;
-  color: black;
+  color: white;
 `;
+export const Link = styled.TouchableOpacity``
+
+export const LinkText = styled.Text`
+  color: white;
+`
+

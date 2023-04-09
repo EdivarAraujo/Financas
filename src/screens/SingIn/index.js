@@ -1,19 +1,21 @@
-import React,{ useState,useEffect } from "react";
+import React,{ useState,useEffect, useContext } from "react";
 import * as C from './styles'
-import {StatusBar,Animated,Keyboard,Dimensions} from 'react-native'
+import {StatusBar,Animated,Keyboard,Dimensions, ActivityIndicator} from 'react-native'
 import Logo from '../../assets/logo.png'
 import {InputValues, RenderConditional} from "../../components/index";
-
+import { useNavigation }from "@react-navigation/native"
+import { AuthContext } from "../../contexts/auth"
 
 export default function SingIn(){
+  const navigation = useNavigation()
+  const { loadingAuth, signIn } = useContext(AuthContext)
   const { width,height } = Dimensions.get('screen')
-  const [user,setUser] = useState('')
+  const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [error, setError] = useState(false)
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false)
   const [logo] =  useState(new Animated.ValueXY({x: (height / 3), y: 250}));
   
-
   useEffect(() => {
     keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyboardDidShow);
     keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', keyboardDidHide);  
@@ -57,12 +59,13 @@ export default function SingIn(){
     }
 
     //função de validação de dados para login 
-    function validationForm(){
-      if(!user || !password){
+    function heandleLogin(){
+       if(!email || !password){
         setError(true)
-      }else{
+       } else {
         setError(false)
-      }
+       }
+       signIn(email, password)
     }
 
   return ( 
@@ -86,12 +89,12 @@ export default function SingIn(){
 
     <C.ContainerInput isKeyboardVisible={isKeyboardVisible}>
       <InputValues
-        error={error && !user}
-        placeholder={'Insira seu usuario'}
+        error={error && !email}
+        placeholder={'Insira seu email'}
         type="text"
-        text="Usuario"
-        value={user}
-        onChangeText={(value) => {setUser(value)}}
+        text="Email"
+        value={email}
+        onChangeText={(value) => {setEmail(value)}}
       />
       <InputValues
         error={error && !password}
@@ -102,9 +105,18 @@ export default function SingIn(){
         onChangeText={(value) => {setPassword(value)}}
         secureTextEntry={true}
       />
-      <C.ButtonEnter onPress={validationForm}>
-        <C.TextButton>Entrar</C.TextButton>
-      </C.ButtonEnter>
+      <C.SubmitButton onPress={heandleLogin}>
+        {
+          loadingAuth ? (
+            <ActivityIndicator size={20} color="#fff"/>
+          ) : (
+            <C.TextButton>Entrar</C.TextButton>
+          )
+        }
+      </C.SubmitButton>
+      <C.Link onPress={() => navigation.navigate("SingUp")}>
+        <C.LinkText>Criar uma conta!</C.LinkText>
+      </C.Link>
      </C.ContainerInput>
     </C.Container>
   )
