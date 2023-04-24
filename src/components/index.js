@@ -5,6 +5,8 @@ import InputValues from "./InputValues";
 import RenderConditional from "./RenderConditional";
 import Header from "./Header";
 import BalanceItem from "./BalanceItem";
+import RegisterTypes from "./RegisterTypes";
+import HistoricoList from "./HistoricoList";
 
 export {
   AlertBox,
@@ -13,5 +15,7 @@ export {
   InputValues,
   RenderConditional,
   Header,
-  BalanceItem
+  BalanceItem,
+  RegisterTypes,
+  HistoricoList
 }

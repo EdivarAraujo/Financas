@@ -20,7 +20,7 @@ export const FildInpult = styled.TextInput`
 export const TextComponent = styled.Text.attrs({
   paddingVertical: 4
 })`
-  color: #fff;
+  color: ${({bgColor}) => bgColor};
   width: 95%;
   text-align: left;
   font-size: 18px;
