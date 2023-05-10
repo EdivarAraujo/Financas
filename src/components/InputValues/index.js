@@ -18,12 +18,13 @@ export default function InputValues(props){
     blurOnSubmit,
     inputRef,
     onFocus,
-    secureTextEntry
+    secureTextEntry,
+    bgColor
   } = props
 
   return (
     <C.ContainerInput>
-       <C.TextComponent>{text}</C.TextComponent>
+       <C.TextComponent bgColor={bgColor}>{text}</C.TextComponent>
           <C.FildInpult
             ref={inputRef}
             autoCapitalize={autoCapitalize}

@@ -89,6 +89,7 @@ export default function SingIn(){
 
     <C.ContainerInput isKeyboardVisible={isKeyboardVisible}>
       <InputValues
+        bgColor="#FFFFFF"
         error={error && !email}
         placeholder={'Insira seu email'}
         type="text"
@@ -97,6 +98,7 @@ export default function SingIn(){
         onChangeText={(value) => {setEmail(value)}}
       />
       <InputValues
+        bgColor="#FFFFFF"
         error={error && !password}
         placeholder={'Insira sua senha'}
         type="password"

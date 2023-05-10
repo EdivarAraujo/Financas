@@ -4,6 +4,12 @@ import SlideExits from "./SlideExits";
 import InputValues from "./InputValues";
 import RenderConditional from "./RenderConditional";
 import Header from "./Header";
+import BalanceItem from "./BalanceItem";
+import RegisterTypes from "./RegisterTypes";
+import HistoricoList from "./HistoricoList";
+import CustonDrawer from "./CustonDrawer";
+import CalendarModal from "./CalendarModal";
+import InforReceives from "./InfoReceives";
 
 export {
   AlertBox,
@@ -11,5 +17,11 @@ export {
   SlideExits,
   InputValues,
   RenderConditional,
-  Header
+  Header,
+  BalanceItem,
+  RegisterTypes,
+  HistoricoList,
+  CustonDrawer,
+  CalendarModal,
+  InforReceives
 }

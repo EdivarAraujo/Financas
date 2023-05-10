@@ -107,7 +107,7 @@ export default function AuthProvider({children}) {
       loadingAuth,
       loading,
       signUp,
-      signIn,
+      signIn,  
       signOut
       }}>
        {children}
