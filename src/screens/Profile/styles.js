@@ -9,7 +9,7 @@ export const Message = styled.Text`
  font-size: 18px;
  font-weight: bold;
  margin-top: 24px;
- color: #121212
+ color: #121212;
 `
 export const Name = styled.Text`
  font-size: 24px;

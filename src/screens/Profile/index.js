@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import * as C from './styles'
 import { Header } from "../../components";
 import { AuthContext } from '../../contexts/auth'
+import { useNavigation  } from "@react-navigation/native"
 
 export default function Profile(){
   const { user, signOut } = useContext(AuthContext)
+  const navigation = useNavigation()
 
   return ( 
     <C.Container>
@@ -13,7 +15,7 @@ export default function Profile(){
         <C.Name numberOfLines={1}>
            {user && user.name}
         </C.Name>
-        <C.NewLink>
+        <C.NewLink onPress={() => navigation.navigate('Registrar')} >
           <C.NewText>Fazer Registro</C.NewText>
         </C.NewLink>
         <C.LogoutButton onPress={() => signOut()} >

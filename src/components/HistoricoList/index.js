@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import * as C from './styles'
-import { Alert, TouchableWithoutFeedback } from "react-native"
+import { Alert, TouchableWithoutFeedback, View } from "react-native"
 import Icon from "react-native-vector-icons/Feather";
+import {InforReceives} from "../../components"
 
 export default function HistoricoList({data, deleteItem}){
+  const [visible, setVisible] = useState(false)
   const { type, value, id } = data
  
  function handleDeleteItem(){
@@ -23,8 +25,14 @@ export default function HistoricoList({data, deleteItem}){
    )
  }
 
+ function onCloseModal(){
+  setVisible(false)
+ }
+
   return (
-   <TouchableWithoutFeedback onLongPress={() => handleDeleteItem()}>
+   <TouchableWithoutFeedback 
+      onPress={() => setVisible(true)}
+      onLongPress={() => handleDeleteItem()}>
       <C.Container>
         <C.Tipo>
           <C.IconView tipo={type} >
@@ -40,8 +48,14 @@ export default function HistoricoList({data, deleteItem}){
       <C.ValorText>
           R$ {value}
       </C.ValorText>
-
+     
+      <InforReceives 
+        visible={visible}
+        setVisible={onCloseModal}
+        data={data}
+        />
       </C.Container>
+     
    </TouchableWithoutFeedback>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from "@react-navigation/drawer"
-import { Home, New, Profile } from "../screens/index"
+import { Home, New, Profile, } from "../screens/index"
+import { CustonDrawer } from '../components/index'
 
 const AppDrawer = createDrawerNavigator()
 
@@ -8,6 +9,7 @@ export default function AppRoutes(){
 
   return (
     <AppDrawer.Navigator
+      drawerContent={(props) => <CustonDrawer {...props}/>}
       screenOptions={{
         headerShown: false,
         drawerStyle:{

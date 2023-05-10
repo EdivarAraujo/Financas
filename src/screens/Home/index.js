@@ -1,6 +1,7 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import * as C from './styles'
-import { Header, HistoricoList } from "../../components"
+import { Modal } from 'react-native'
+import { Header, HistoricoList, CalendarModal } from "../../components"
 import api from "../../services/api"
 import { format } from "date-fns"
 import { useIsFocused } from "@react-navigation/native"
@@ -13,12 +14,15 @@ export default function Home(){
   const [listBalance, setListBalance] = useState([])
   const [moviments,setMoviments] = useState([])
   const [dateMovimensts, setDateMovimensts] = useState(new Date())
+  const [modalVisible, setModalVisible] = useState(false)
 
   useEffect(() => {
     let isActive = true;
 
     async function getMoviment(){
-      let dateFormated = format(dateMovimensts, 'dd/MM/yyyy')
+       let dateFormated = format(dateMovimensts, 'dd/MM/yyyy')
+
+      let date = new Date(dateMovimensts)
 
       const receives = await api.get('/receives', {
         params: {
@@ -55,6 +59,10 @@ export default function Home(){
     }
   }
 
+  function filterDateMoviments(dateSelected){
+    setDateMovimensts(dateSelected)
+  }
+
   
 
   return ( 
@@ -68,7 +76,7 @@ export default function Home(){
         renderItem={({item}) => <BalanceItem data={item}/>}
        />
        <C.Area>
-         <C.ButtonCalendar>
+         <C.ButtonCalendar onPress={() => setModalVisible(true)} >
            <Icon
              name="event"
              color="#121212"
@@ -84,6 +92,14 @@ export default function Home(){
            showsHorizontalScrollIndicator={false}
            contentContainerStyle={{paddingBottom:20}}
          />
+         <Modal visible={modalVisible} animationType="fade" transparent={true} >
+            <CalendarModal 
+             setVisible={() => setModalVisible(false)}
+             handleFilter={filterDateMoviments}
+             />
+         </Modal>
+
+
     </C.Background>
   )
 

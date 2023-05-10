@@ -11,13 +11,11 @@ export const Container = styled.View`
 export const Tipo = styled.View`
  flex-direction: row;
 `
-
 export const TipoText = styled.Text`
  color: #fff;
  font-size: 16px;
  font-style: italic;
 `
-
 export const IconView = styled.View`
  flex-direction: row;
  background-color: ${({tipo}) => tipo === 'despesa' ? '#c62c36' : '#049301'};
@@ -28,7 +26,6 @@ export const IconView = styled.View`
  border-radius: 4px;
  margin-bottom: 4px;
 `
-
 export const ValorText = styled.Text`
  color: #121212;
  font-size:22px;

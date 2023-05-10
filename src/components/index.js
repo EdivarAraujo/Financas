@@ -7,6 +7,9 @@ import Header from "./Header";
 import BalanceItem from "./BalanceItem";
 import RegisterTypes from "./RegisterTypes";
 import HistoricoList from "./HistoricoList";
+import CustonDrawer from "./CustonDrawer";
+import CalendarModal from "./CalendarModal";
+import InforReceives from "./InfoReceives";
 
 export {
   AlertBox,
@@ -17,5 +20,8 @@ export {
   Header,
   BalanceItem,
   RegisterTypes,
-  HistoricoList
+  HistoricoList,
+  CustonDrawer,
+  CalendarModal,
+  InforReceives
 }
