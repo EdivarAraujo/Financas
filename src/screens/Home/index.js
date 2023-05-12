@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from "react";
 import * as C from './styles'
-import { Modal } from 'react-native'
+import {  Modal, ScrollView } from 'react-native'
 import { Header, HistoricoList, CalendarModal } from "../../components"
 import api from "../../services/api"
 import { format } from "date-fns"
 import { useIsFocused } from "@react-navigation/native"
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { BalanceItem } from "./../../components/index"
+import { useNavigation } from '@react-navigation/native'
+
 
 
 export default function Home(){
@@ -15,6 +17,8 @@ export default function Home(){
   const [moviments,setMoviments] = useState([])
   const [dateMovimensts, setDateMovimensts] = useState(new Date())
   const [modalVisible, setModalVisible] = useState(false)
+
+  const navigation = useNavigation()
 
   useEffect(() => {
     let isActive = true;
@@ -63,8 +67,6 @@ export default function Home(){
     setDateMovimensts(dateSelected)
   }
 
-  
-
   return ( 
     <C.Background>
        <Header title="Minhas Movimentações"/>
@@ -85,6 +87,13 @@ export default function Home(){
          </C.ButtonCalendar>
          <C.Title>Ultimas Movimentações</C.Title>
        </C.Area>
+         <Modal visible={modalVisible} animationType="fade" transparent={true} >
+            <CalendarModal 
+             setVisible={() => setModalVisible(false)}
+             handleFilter={filterDateMoviments}
+             />
+         </Modal>
+        
          <C.List
            data={moviments}
            keyExtractor={item => item.id}
@@ -92,14 +101,15 @@ export default function Home(){
            showsHorizontalScrollIndicator={false}
            contentContainerStyle={{paddingBottom:20}}
          />
-         <Modal visible={modalVisible} animationType="fade" transparent={true} >
-            <CalendarModal 
-             setVisible={() => setModalVisible(false)}
-             handleFilter={filterDateMoviments}
-             />
-         </Modal>
-
-
+         <C.ContainerButton>
+           <C.ButtonAddSpent onPress={() => navigation.navigate('Registrar')} >
+            <Icon
+              name="add"
+              color="#fff"
+              size={50}
+            />
+           </C.ButtonAddSpent>
+         </C.ContainerButton>
     </C.Background>
   )
 

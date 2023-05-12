@@ -7,9 +7,15 @@ export const TextInfor = styled.Text`
  color: #ff0000;
  font-weight: bold;
 `
+export const ViewModalInfor = styled.View`      
+ flex: 1;
+ justify-content: center;
+ align-items: center;
+ background-color: 'rgba(0, 0, 0, 0.5)';
+`
 export const Infor = styled.View`
  width: 90%;
- height: 20%;
+ height: 30%;
  border-radius: 5px;
  background-color: #FFF;
  padding: 10px;
@@ -18,18 +24,14 @@ export const Infor = styled.View`
  align-items: flex-end;
  opacity: 1 !important;
 `
-export const ViewModalInfor = styled.View`      
- flex: 1;
- justify-content: center;
- align-items: center;
- background-color: 'rgba(0, 0, 0, 0.5)';
-`
 export const ViewInforDescriptionDados = styled.View`
  width: 100%;
  flex-direction: row;
  justify-content: space-between;
  margin-bottom: 5px;
-`
+ `
+export const ViewTitle = styled.View`
+ `
 export const ViewButton = styled.View`
 `
 export const ButtonExit = styled.TouchableOpacity`
@@ -43,14 +45,8 @@ export const Title = styled.Text`
  font-size: 20px;
  font-weight: bold;
  color: #000;
-`
-export const ViewTitle = styled.View`
-`
-export const TextValues = styled.Text`
- font-size: 18px;
- font-weight: bold;
- color: black;
-`
+ `
+
 export const DescriptionInfor = styled.View`
  width: 100%;
  justify-content: flex-start;
@@ -62,7 +58,3 @@ flex-direction: column;
 padding: 2px;
 margin-bottom: 2px;
 `
-
-export const ViewCalendar = styled.View`
- flex: 1;
- `

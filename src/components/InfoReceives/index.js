@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from "react";
-import { Modal, StatusBar, TouchableWithoutFeedback } from "react-native"
+import { Modal, StatusBar, TouchableWithoutFeedback, TouchableOpacity } from "react-native"
 import * as C from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -34,21 +34,20 @@ export default function InforReceives({data,setVisible, visible = false}){
   return (
     <C.ContainerInfor>
       <StatusBar {...configStatusBar}/>
-      {/* <TouchableWithoutFeedback onPress={setVisible}>
-        <C.ViewCalendar></C.ViewCalendar>
-      </TouchableWithoutFeedback> */}
       <Modal 
         animationType="fade"
         visible={visible}
         transparent={true}
-        style={{justifyContent: 'center', alignItems: 'center'}}  
       >
       <C.ViewModalInfor>
         <C.Infor>
+
          <C.ViewInforDescriptionDados> 
+
            <C.ViewTitle>
               <C.Title> Data: {date}</C.Title>
             </C.ViewTitle>
+
           <C.ViewButton>
             <C.ButtonExit 
               onPress={setVisible}
@@ -59,25 +58,32 @@ export default function InforReceives({data,setVisible, visible = false}){
                 color="#121212"
                 />
             </C.ButtonExit>
-           </C.ViewButton>
+           </C.ViewButton> 
+
           </C.ViewInforDescriptionDados>
+
           <C.DescriptionInfor>
             <C.Description>
               <C.Title>Tipo: {type}</C.Title>
             </C.Description>
           </C.DescriptionInfor>
+
           <C.DescriptionInfor>
             <C.Description>
               <C.Title>Descrição: {description}</C.Title>
             </C.Description>
           </C.DescriptionInfor>
+
           <C.DescriptionInfor>
             <C.Description>
               <C.Title>Valor: R$ {valueFormatado}</C.Title>
             </C.Description>
           </C.DescriptionInfor>
+
          </C.Infor>
+
         </C.ViewModalInfor>
+        
       </Modal>
     </C.ContainerInfor>
   )

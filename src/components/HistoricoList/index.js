@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as C from './styles'
-import { Alert, TouchableWithoutFeedback, View } from "react-native"
+import { Alert, TouchableWithoutFeedback, ScrollView } from "react-native"
 import Icon from "react-native-vector-icons/Feather";
 import {InforReceives} from "../../components"
 
@@ -55,7 +55,6 @@ export default function HistoricoList({data, deleteItem}){
         data={data}
         />
       </C.Container>
-     
    </TouchableWithoutFeedback>
   )
 }
