@@ -14,21 +14,22 @@ export const ViewModalInfor = styled.View`
  background-color: 'rgba(0, 0, 0, 0.5)';
 `
 export const Infor = styled.View`
- width: 90%;
- height: 30%;
+ width: 95%;
+ height: 170px;
  border-radius: 5px;
  background-color: #FFF;
- padding: 10px;
- margin-left: 10px;
- justify-content: flex-start;
+ padding: 5px;
+ margin-left: 5px;
+ padding-left: 20px;
+ justify-content: space-around;
  align-items: flex-end;
  opacity: 1 !important;
 `
 export const ViewInforDescriptionDados = styled.View`
- width: 100%;
- flex-direction: row;
- justify-content: space-between;
- margin-bottom: 5px;
+ /* width: 100%; */
+ /* justify-content: space-between; */
+ /* margin-bottom: 5px; */
+ /* background-color: yellow; */
  `
 export const ViewTitle = styled.View`
  `
@@ -46,15 +47,16 @@ export const Title = styled.Text`
  font-weight: bold;
  color: #000;
  `
-
 export const DescriptionInfor = styled.View`
- width: 100%;
- justify-content: flex-start;
- align-items: flex-start;
- padding: 2px;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-bottom: 8px;
+  /* background-color: green; */
 `
 export const Description = styled.View`
-flex-direction: column;
-padding: 2px;
-margin-bottom: 2px;
+  /* flex-direction: column; */
+  /* padding: 2px; */
+  /* margin-bottom: 2px; */
+  /* background-color: blue; */
 `

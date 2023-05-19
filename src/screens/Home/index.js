@@ -15,7 +15,7 @@ export default function Home(){
   const isFocused = useIsFocused()
   const [listBalance, setListBalance] = useState([])
   const [moviments,setMoviments] = useState([])
-  const [dateMovimensts, setDateMovimensts] = useState(new Date())
+  const [dateMoviments, setDateMoviments] = useState(new Date())
   const [modalVisible, setModalVisible] = useState(false)
 
   const navigation = useNavigation()
@@ -24,9 +24,10 @@ export default function Home(){
     let isActive = true;
 
     async function getMoviment(){
-       let dateFormated = format(dateMovimensts, 'dd/MM/yyyy')
+      let date = new Date(dateMoviments)
+      let onlyDate = date.valueOf() + date.getTimezoneOffset() * 60 * 1000
+      let dateFormated = format(onlyDate, "dd/MM/yyyy")
 
-      let date = new Date(dateMovimensts)
 
       const receives = await api.get('/receives', {
         params: {
@@ -47,7 +48,7 @@ export default function Home(){
     getMoviment()
     
     return () => isActive = false;
-  },[isFocused, dateMovimensts])
+  },[isFocused, dateMoviments]);
 
   async function handleDeleteItem(id){
 
@@ -57,18 +58,19 @@ export default function Home(){
           item_id: id,
         }
       })
-      setDateMovimensts(new Date())
+      setDateMoviments(new Date(dateFormated))
     } catch (error) {
       console.log(error)
     }
+    moviments
   }
 
   function filterDateMoviments(dateSelected){
-    setDateMovimensts(dateSelected)
+    setDateMoviments(dateSelected)
   }
 
   return ( 
-    <C.Background>
+    <C.ContainerBackground>
        <Header title="Minhas Movimentações"/>
        <C.ListBalance
         data={listBalance}
@@ -110,7 +112,7 @@ export default function Home(){
             />
            </C.ButtonAddSpent>
          </C.ContainerButton>
-    </C.Background>
+    </C.ContainerBackground>
   )
 
 }

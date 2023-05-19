@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from "react";
-import { Modal, StatusBar, TouchableWithoutFeedback, TouchableOpacity } from "react-native"
+import { Modal, StatusBar } from "react-native"
 import * as C from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -42,13 +42,8 @@ export default function InforReceives({data,setVisible, visible = false}){
       <C.ViewModalInfor>
         <C.Infor>
 
-         <C.ViewInforDescriptionDados> 
-
-           <C.ViewTitle>
-              <C.Title> Data: {date}</C.Title>
-            </C.ViewTitle>
-
-          <C.ViewButton>
+         {/* <C.ViewInforDescriptionDados>  */}
+          {/* <C.ViewButton> */}
             <C.ButtonExit 
               onPress={setVisible}
               title="fechar">
@@ -58,9 +53,14 @@ export default function InforReceives({data,setVisible, visible = false}){
                 color="#121212"
                 />
             </C.ButtonExit>
-           </C.ViewButton> 
+           {/* </C.ViewButton>  */}
+          {/* </C.ViewInforDescriptionDados> */}
 
-          </C.ViewInforDescriptionDados>
+        <C.DescriptionInfor>  
+          <C.ViewTitle>
+              <C.Title>Data: {date}</C.Title>
+            </C.ViewTitle>
+        </C.DescriptionInfor>
 
           <C.DescriptionInfor>
             <C.Description>

@@ -1,8 +1,10 @@
 //provider prover todas as informações para todas as telas, para poder usar funcionalidades em qualquer que seja o local da aplicação
 import React, {createContext, useState, useEffect} from 'react';
+import { Alert } from 'react-native'
 import { useNavigation } from "@react-navigation/native"
 import api from "../services/api"
 import AsyncStorage from "@react-native-async-storage/async-storage"
+import Toast from 'react-native-toast-message'
 
 export const AuthContext = createContext({})
 
@@ -12,6 +14,14 @@ export default function AuthProvider({children}) {
    const [loading, setLoading] = useState(true)
 
    const navigation = useNavigation()
+
+   const showToast = (type, text) => {
+    Toast.show({
+      type: type,
+      text1: text,
+    });
+
+  }
 
   //verificar se tem algum token salvo na aplicação
   useEffect(() => {
@@ -53,6 +63,7 @@ export default function AuthProvider({children}) {
        
 
     } catch (error) {
+      showToast('error', error.message)
       console.log("Erro ao cadastrar", error)
       setLoadingAuth(false)
     }
@@ -83,13 +94,14 @@ export default function AuthProvider({children}) {
       name,
       email
      })
+     showToast('success', `Bem vindo ${name}`);
      setLoadingAuth(false)
+
     
    } catch (error) {
       console.log("Erro ao tentar logar", error)
       setLoadingAuth(false)
    }
-
  }
 
 //função para delogar usuario
@@ -100,6 +112,23 @@ export default function AuthProvider({children}) {
   })
  }
 
+ function logout(){
+  Alert.alert(
+   'Atenção',
+   'Voce tem certeza que deseja sair ??',
+    [
+     {
+       text: 'Cancelar',
+       style: 'cancel',   
+     },
+     {
+       text: 'Confirmar',
+       onPress: () => signOut(),
+     }
+    ]
+  )
+}
+
    return (
      <AuthContext.Provider value={{
       signed: !!user,
@@ -108,9 +137,11 @@ export default function AuthProvider({children}) {
       loading,
       signUp,
       signIn,  
-      signOut
+      logout,
+      showToast
       }}>
        {children}
+       <Toast/>
      </AuthContext.Provider>
 
    )

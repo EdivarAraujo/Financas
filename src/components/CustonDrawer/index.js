@@ -9,7 +9,7 @@ import * as C from './styles'
 import { AuthContext } from '../../contexts/auth'
 
 export default function CustonDrawer(props){
-  const { user, signOut } = useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext)
 
   return (
     <DrawerContentScrollView {...props} > 
@@ -25,7 +25,7 @@ export default function CustonDrawer(props){
       <DrawerItemList {...props}/>
       <DrawerItem {...props}
        label="Sair do app"
-       onPress={()=> signOut()}
+       onPress={()=> logout()}
       />
     </DrawerContentScrollView>
   )

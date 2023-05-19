@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/auth'
 import { useNavigation  } from "@react-navigation/native"
 
 export default function Profile(){
-  const { user, signOut } = useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext)
   const navigation = useNavigation()
 
   return ( 
@@ -18,7 +18,7 @@ export default function Profile(){
         <C.NewLink onPress={() => navigation.navigate('Registrar')} >
           <C.NewText>Fazer Registro</C.NewText>
         </C.NewLink>
-        <C.LogoutButton onPress={() => signOut()} >
+        <C.LogoutButton onPress={() => logout()} >
           <C.LogoutText>Sair</C.LogoutText>
         </C.LogoutButton>
     </C.Container>

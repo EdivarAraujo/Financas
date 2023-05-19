@@ -6,9 +6,9 @@ import {InputValues, RenderConditional} from "../../components/index";
 import { useNavigation }from "@react-navigation/native"
 import { AuthContext } from "../../contexts/auth"
 
-export default function SingIn(){
+export default function SingIn(data){
   const navigation = useNavigation()
-  const { loadingAuth, signIn } = useContext(AuthContext)
+  const { loadingAuth, signIn, showToast, user } = useContext(AuthContext)
   const { width,height } = Dimensions.get('screen')
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
@@ -23,6 +23,7 @@ export default function SingIn(){
     return () => {
       Keyboard.removeAllListeners('keyboardDidShow')
     }
+
   }, []);
 
     //Teclado Aberto
@@ -61,9 +62,10 @@ export default function SingIn(){
     //função de validação de dados para login 
     function heandleLogin(){
        if(!email || !password){
+        showToast('error', 'Preencha Todos os Campos');
         setError(true)
        } else {
-        setError(false)
+         setError(false)
        }
        signIn(email, password)
     }

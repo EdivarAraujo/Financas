@@ -1,8 +1,8 @@
 import styled from "styled-components/native";
 
-export const Background = styled.SafeAreaView`
+export const ContainerBackground = styled.SafeAreaView`
  flex: 1;
- background-color: #Fff;
+ background-color: #fff;
 `
 export const ListBalance = styled.FlatList`
  max-height: 190px;
