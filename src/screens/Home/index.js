@@ -1,28 +1,33 @@
 import React, {useEffect, useState} from "react";
 import * as C from './styles'
-import { Modal } from 'react-native'
+import {  Modal, ScrollView } from 'react-native'
 import { Header, HistoricoList, CalendarModal } from "../../components"
 import api from "../../services/api"
 import { format } from "date-fns"
 import { useIsFocused } from "@react-navigation/native"
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { BalanceItem } from "./../../components/index"
+import { useNavigation } from '@react-navigation/native'
+
 
 
 export default function Home(){
   const isFocused = useIsFocused()
   const [listBalance, setListBalance] = useState([])
   const [moviments,setMoviments] = useState([])
-  const [dateMovimensts, setDateMovimensts] = useState(new Date())
+  const [dateMoviments, setDateMoviments] = useState(new Date())
   const [modalVisible, setModalVisible] = useState(false)
+
+  const navigation = useNavigation()
 
   useEffect(() => {
     let isActive = true;
 
     async function getMoviment(){
-       let dateFormated = format(dateMovimensts, 'dd/MM/yyyy')
+      let date = new Date(dateMoviments)
+      let onlyDate = date.valueOf() + date.getTimezoneOffset() * 60 * 1000
+      let dateFormated = format(onlyDate, "dd/MM/yyyy")
 
-      let date = new Date(dateMovimensts)
 
       const receives = await api.get('/receives', {
         params: {
@@ -43,7 +48,7 @@ export default function Home(){
     getMoviment()
     
     return () => isActive = false;
-  },[isFocused, dateMovimensts])
+  },[isFocused, dateMoviments]);
 
   async function handleDeleteItem(id){
 
@@ -53,20 +58,19 @@ export default function Home(){
           item_id: id,
         }
       })
-      setDateMovimensts(new Date())
+      setDateMoviments(new Date(dateFormated))
     } catch (error) {
       console.log(error)
     }
+    moviments
   }
 
   function filterDateMoviments(dateSelected){
-    setDateMovimensts(dateSelected)
+    setDateMoviments(dateSelected)
   }
 
-  
-
   return ( 
-    <C.Background>
+    <C.ContainerBackground>
        <Header title="Minhas Movimentações"/>
        <C.ListBalance
         data={listBalance}
@@ -85,6 +89,13 @@ export default function Home(){
          </C.ButtonCalendar>
          <C.Title>Ultimas Movimentações</C.Title>
        </C.Area>
+         <Modal visible={modalVisible} animationType="fade" transparent={true} >
+            <CalendarModal 
+             setVisible={() => setModalVisible(false)}
+             handleFilter={filterDateMoviments}
+             />
+         </Modal>
+        
          <C.List
            data={moviments}
            keyExtractor={item => item.id}
@@ -92,15 +103,16 @@ export default function Home(){
            showsHorizontalScrollIndicator={false}
            contentContainerStyle={{paddingBottom:20}}
          />
-         <Modal visible={modalVisible} animationType="fade" transparent={true} >
-            <CalendarModal 
-             setVisible={() => setModalVisible(false)}
-             handleFilter={filterDateMoviments}
-             />
-         </Modal>
-
-
-    </C.Background>
+         <C.ContainerButton>
+           <C.ButtonAddSpent onPress={() => navigation.navigate('Registrar')} >
+            <Icon
+              name="add"
+              color="#fff"
+              size={50}
+            />
+           </C.ButtonAddSpent>
+         </C.ContainerButton>
+    </C.ContainerBackground>
   )
 
 }
